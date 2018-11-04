@@ -1,30 +1,45 @@
 import React, { Component } from 'react'
-import { AppRegistry, View, StyleSheet } from 'react-native'
+import { AppRegistry, View, StyleSheet, ScrollView } from 'react-native'
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.box} />
-      </View>
+      <ScrollView style={styles.container}>
+        <View style={styles.boxLargeRed}></View>
+        <ScrollView horizontal>
+          <View style={styles.boxSmall}></View>
+          <View style={styles.boxSmall}></View>
+          <View style={styles.boxSmall}></View>
+        </ScrollView>
+        <View style={styles.boxLargeBlue}></View>
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 20,
+    flex: 1
   },
-  box: {
-    width: 200,
+  boxLargeRed: {
+    height: 500,
+    width: 500,
+    backgroundColor: 'red',
+    margin: 10
+  },
+  boxLargeBlue: {
+    height: 500,
+    width: 500,
+    backgroundColor: 'steelblue',
+    margin: 10
+  },
+  boxSmall: {
     height: 200,
-    backgroundColor: 'skyblue',
-    borderWidth: 2,
-    borderColor: 'steelblue',
-    borderRadius: 20,
-  },
+    width: 200,
+    backgroundColor: 'maroon',
+    margin: 10
+  }
 })
 
 AppRegistry.registerComponent('App', () => App)
