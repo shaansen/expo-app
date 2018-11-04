@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, StyleSheet, Text, ScrollView, FlatList } from 'react-native'
+import { AppRegistry, View, StyleSheet, Text, ScrollView, SectionList } from 'react-native'
 
-const rows = [
-  {id: 0, text: 'View'},
-  {id: 1, text: 'Text'},
-  {id: 2, text: 'Image'},
-  {id: 3, text: 'ScrollView'},
-  {id: 4, text: 'ListView'},
-  {id: 10, text: 'View'},
-  {id: 11, text: 'Text'},
-  {id: 12, text: 'Image'},
-  {id: 13, text: 'ScrollView'},
-  {id: 14, text: 'ListView'},
-  {id: 20, text: 'View'},
-  {id: 21, text: 'Text'},
-  {id: 22, text: 'Image'},
-  {id: 23, text: 'ScrollView'},
-  {id: 24, text: 'ListView'},
+const sections = [
+  {
+    id: 0,
+    title: 'Basic Components',
+    data: [
+      {id: 0, text: 'View'},
+      {id: 1, text: 'Text'},
+      {id: 2, text: 'Image'},
+    ]
+  },
+  {
+    id: 1,
+    title: 'List Components',
+    data: [
+      {id: 3, text: 'ScrollView'},
+      {id: 4, text: 'ListView'},
+    ]
+  }
 ]
 
 const extractKey = ({id}) => id
@@ -30,13 +32,22 @@ export default class App extends Component {
       </Text>
     )
   }
+
+  renderSectionHeader = ({section}) => {
+    return (
+      <Text style={styles.header}>
+        {section.title}
+      </Text>
+    )
+  }
   
   render() {
     return (
-      <FlatList
+      <SectionList
         style={styles.container}
-        data={rows}
+        sections={sections}
         renderItem={this.renderItem}
+        renderSectionHeader={this.renderSectionHeader}
         keyExtractor={extractKey}
       />
     );
@@ -53,6 +64,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     backgroundColor: 'skyblue',
   },
+  header: {
+    padding: 15,
+    marginBottom: 5,
+    backgroundColor: 'steelblue',
+    color: 'white',
+    fontWeight: 'bold',
+  },
 })
+
 
 AppRegistry.registerComponent('App', () => App)
