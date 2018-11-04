@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { AppRegistry, View, StyleSheet } from 'react-native'
+import { AppRegistry, View, Text, StyleSheet } from 'react-native'
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.box} />
+        <Text style={styles.text}>Hello!</Text>
       </View>
     )
   }
@@ -17,13 +17,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  box: {
-    width: 200,
-    height: 200,
-    backgroundColor: 'skyblue',
-    borderWidth: 2,
-    borderColor: 'steelblue',
-    borderRadius: 20,
+  text: {
+    backgroundColor: 'whitesmoke',
+    color: '#4A90E2',
+    fontSize: 24,
+    padding: 10,
   },
 })
 
