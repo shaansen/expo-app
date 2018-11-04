@@ -1,29 +1,21 @@
 import React, { Component } from 'react'
-import { AppRegistry, View, StyleSheet } from 'react-native'
+import { AppRegistry, Image, StyleSheet } from 'react-native'
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.box} />
-      </View>
+      <Image
+        style={styles.image}
+        source={{uri: 'https://images.alphacoders.com/102/102211.jpg'}}
+      />
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  box: {
+  image: {
     width: 200,
     height: 200,
-    backgroundColor: 'skyblue',
-    borderWidth: 2,
-    borderColor: 'steelblue',
-    borderRadius: 20,
   },
 })
 
