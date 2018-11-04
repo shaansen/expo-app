@@ -1,45 +1,58 @@
-import React, { Component } from 'react'
-import { AppRegistry, View, StyleSheet, ScrollView } from 'react-native'
+import React, { Component } from 'react';
+import { AppRegistry, View, StyleSheet, Text, ScrollView, FlatList } from 'react-native'
+
+const rows = [
+  {id: 0, text: 'View'},
+  {id: 1, text: 'Text'},
+  {id: 2, text: 'Image'},
+  {id: 3, text: 'ScrollView'},
+  {id: 4, text: 'ListView'},
+  {id: 10, text: 'View'},
+  {id: 11, text: 'Text'},
+  {id: 12, text: 'Image'},
+  {id: 13, text: 'ScrollView'},
+  {id: 14, text: 'ListView'},
+  {id: 20, text: 'View'},
+  {id: 21, text: 'Text'},
+  {id: 22, text: 'Image'},
+  {id: 23, text: 'ScrollView'},
+  {id: 24, text: 'ListView'},
+]
+
+const extractKey = ({id}) => id
 
 export default class App extends Component {
+  
+  renderItem = ({item}) => {
+    return (
+      <Text style={styles.row}>
+        {item.text}
+      </Text>
+    )
+  }
+  
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.boxLargeRed}></View>
-        <ScrollView horizontal>
-          <View style={styles.boxSmall}></View>
-          <View style={styles.boxSmall}></View>
-          <View style={styles.boxSmall}></View>
-        </ScrollView>
-        <View style={styles.boxLargeBlue}></View>
-      </ScrollView>
-    )
+      <FlatList
+        style={styles.container}
+        data={rows}
+        renderItem={this.renderItem}
+        keyExtractor={extractKey}
+      />
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,
-    flex: 1
+    marginTop: 20,
+    flex: 1,
   },
-  boxLargeRed: {
-    height: 500,
-    width: 500,
-    backgroundColor: 'red',
-    margin: 10
+  row: {
+    padding: 15,
+    marginBottom: 5,
+    backgroundColor: 'skyblue',
   },
-  boxLargeBlue: {
-    height: 500,
-    width: 500,
-    backgroundColor: 'steelblue',
-    margin: 10
-  },
-  boxSmall: {
-    height: 200,
-    width: 200,
-    backgroundColor: 'maroon',
-    margin: 10
-  }
 })
 
 AppRegistry.registerComponent('App', () => App)
