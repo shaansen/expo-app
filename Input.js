@@ -14,6 +14,13 @@ export default class App extends Component {
     this.setState({text})
   }
 
+
+  onSubmitEditing = () => {
+    this.props.addTodo(this.state.text);
+    this.setState({text: ''})
+  }
+
+
   render() {
     return (
       <TextInput 
@@ -21,6 +28,7 @@ export default class App extends Component {
         value = {this.state.text}
         placeholder = {this.props.placeholder}
         onChangeText = {this.onChangeText}
+        onSubmitEditing = {this.onSubmitEditing}
       />
     )
   }

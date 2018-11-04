@@ -8,6 +8,7 @@ export default class List extends Component {
 
     return (
       <TouchableOpacity
+        key={i}
         style={styles.item}
         onPress={() => onPressItem(i)}
       >
@@ -17,7 +18,7 @@ export default class List extends Component {
   }
 
   render() {
-    const {list} = this.props
+    const list = this.props.todos
 
     return (
       <View>
