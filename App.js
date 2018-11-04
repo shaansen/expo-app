@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppRegistry, View, Text, Stylesheet } from "react-native";
+import { AppRegistry, View, Text, StyleSheet } from "react-native";
 import Toggle from "./Toggle";
 
 export default class App extends Component {
@@ -13,10 +13,28 @@ export default class App extends Component {
   }
 
   render() {
+
     return (
       <View style={styles.container}>
-        <Toggle />
-        <View style={styles.layout}>
+        <Toggle 
+          label={'Primary Axis (flexDirection)'}
+          value={this.state.flexDirection}
+          options={['row', 'column']}
+          onChange={(option) => this.setState({flexDirection: option})}
+        />
+        <Toggle 
+          label={'Distribution (justifyContent)'}
+          value={this.state.justifyContent}
+          options={['flex-start', 'center', 'flex-end', 'space-around', 'space-between']}
+          onChange={(option) => this.setState({justifyContent: option})}
+        />
+        <Toggle 
+          label={'Alignment (alignItems)'}
+          value={this.state.alignItems}
+          options={['flex-start', 'center', 'flex-end', 'stretch']}
+          onChange={(option) => this.setState({alignItems: option})}
+        />
+        <View style={styles.layout, this.state}>
           <View style={styles.box} />
           <View style={styles.box} />
           <View style={styles.box} />
@@ -26,7 +44,7 @@ export default class App extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1
   },
@@ -39,6 +57,6 @@ const styles = {
     backgroundColor: "black",
     margin: 10
   }
-};
+});
 
 AppRegistry.registerComponent("App", () => App);
